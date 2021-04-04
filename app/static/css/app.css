@@ -13,6 +13,7 @@
 body {
     padding-top: 5rem;
 }
+<<<<<<< HEAD
 .news__item h4{
     text-align: left;
 }
@@ -20,6 +21,9 @@ body {
 .news__item p{
     text-align: left;
 }
+=======
+
+>>>>>>> parent of 71d658b... Completed
 footer  {
     padding-top: 20px;
 }
