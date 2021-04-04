@@ -17,32 +17,24 @@ const Home = {
  const NewsList = {
   name: 'Newslist',
   template: `
-  <div class="news">
-  <h2 class="text-center">News</h2>
-  </div> 
-
+  <div class='news text-center'>
   <div class="form-inline d-flex justify-content-center">
   <div class="form-group mx-sm-3 mb-2">
-  <label class="sr-only" for="search">Search</label>
-  <input type="search" name="search" v-model="searchTerm"
-  id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter
-  search term here" />
-  <button class="btn btn-primary mb-2"
-@click="searchNews">Search</button>
+    <label class="sr-only" for="search">Search</label>
+    <input type="search" name="search" v-model="searchTerm" id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter search term here" />
+    <button class="btn btn-primary mb-2" @click="searchNews">Search</button>
   </div>
   </div>
 
-
-  <div class="card-lay rounded ">
-  <div v-for="article in articles" class="card " style="width: 18rem;">
-  <span class='pt-2 bg-success rounded'></span>
-  <h5 class="font-weight-bold pt-1 card-title text-left">{{ article.title }}</h5>
-  <img class="card-img-top" :src="article.urlToImage" alt="Card image cap">
-  <div class="card-body">
-    <p class="card-text text-left">{{ article.description }}</p>
-  </div>
-</div>
-</div>
+    <h2>News</h2>
+    <ul class="news__list">
+    <li v-for="article in articles" class="news__item">
+      <h4>{{ article.title }}</h4>
+      <img :src="article.urlToImage"/>
+      <p>{{ article.description }}</p> 
+    </li>
+    </ul>
+    </div>
 
   `,
   created() {
@@ -50,7 +42,7 @@ const Home = {
     fetch('https://newsapi.org/v2/top-headlines?country=us',
    {
     headers: {
-    'Authorization': 'Bearer <api-token>'
+    'Authorization': 'Bearer c0efa1c8c8bc401992192945b3769bf9'
     }
    })
     .then(function(response) {
@@ -73,7 +65,8 @@ const Home = {
       fetch('https://newsapi.org/v2/everything?q='+
      self.searchTerm + '&language=en', {
       headers: {
-      'Authorization': 'Bearer  <api-token>'
+        // <api-token>
+      'Authorization': 'Bearer  c0efa1c8c8bc401992192945b3769bf9'
       }
      })
       .then(function(response) {
