@@ -1,5 +1,4 @@
 /* Add your Application JavaScript */
-<<<<<<< HEAD
 const Home = {
   name: 'Home',
   template: `
@@ -66,6 +65,7 @@ const Home = {
       fetch('https://newsapi.org/v2/everything?q='+
      self.searchTerm + '&language=en', {
       headers: {
+      
       'Authorization': 'Bearer  <api-token>'
       }
      })
@@ -81,15 +81,26 @@ const Home = {
    };
 
 
-=======
->>>>>>> parent of 71d658b... Completed
 const app = Vue.createApp({
   data() {
     return {
       welcome: 'Hello World! Welcome to VueJS'
     }
+  },
+  components: {
+    'home': Home,
+    'news-list': NewsList
   }
 });
+
+const router = VueRouter.createRouter({
+  history: VueRouter.createWebHistory(),
+  routes: [
+  { path: '/', component: Home },
+  { path: '/news', component: NewsList }
+  ]
+});
+
 
 app.component('app-header', {
   name: 'AppHeader',
@@ -104,11 +115,9 @@ app.component('app-header', {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
+                  <router-link to="/" class="nav-link">Home</router-link>                </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">News</a>
-                </li>
+                <router-link to="/news" class="nav-link">News</router-link>                </li>
               </ul>
             </div>
           </nav>
@@ -118,6 +127,9 @@ app.component('app-header', {
     return {};
   }
 });
+
+
+
 
 app.component('app-footer', {
   name: 'AppFooter',
@@ -134,5 +146,5 @@ app.component('app-footer', {
       }
   }
 })
-
+app.use(router)
 app.mount('#app');
