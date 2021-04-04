@@ -1,7 +1,11 @@
 body {
     padding-top: 5rem;
 }
-
+.card-lay{
+    display: grid;
+    grid-template-columns: 27% 27% 27%;
+    gap: 1%;
+  }
 footer  {
     padding-top: 20px;
 }
